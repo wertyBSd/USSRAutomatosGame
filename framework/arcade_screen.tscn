@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://framework/arcade_screen.gd" id="1_screen"]
+[ext_resource type="Shader" path="res://framework/crt.gdshader" id="2_crt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crt"]
+shader = ExtResource("2_crt")
+
+[node name="ArcadeScreen" type="Node"]
+script = ExtResource("1_screen")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03, 0.03, 0.04, 1)
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Screen" type="TextureRect" parent="Center"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(960, 720)
+layout_mode = 2
+stretch_mode = 5
+material = SubResource("ShaderMaterial_crt")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+disable_3d = true
+handle_input_locally = false
+size = Vector2i(320, 240)
+render_target_update_mode = 4
